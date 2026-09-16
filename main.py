@@ -1,6 +1,11 @@
 import json
+from datetime import datetime
 
 import requests
+
+
+# Define timestamp
+current_datetime = str(datetime.now())
 
 
 def get_posts():
@@ -40,7 +45,7 @@ def main():
 
         try:
             first_post = json.dumps(first_post, indent=4)
-            write_to_file(first_post)
+            write_to_file(f"{current_datetime}: {first_post}\n")
 
         except Exception as e:
             return (e,'Failed to write to file')
@@ -52,4 +57,3 @@ def main():
         
 if __name__ == '__main__':
     main()
-    
