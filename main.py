@@ -2,11 +2,16 @@ import json
 from datetime import datetime
 
 import requests
+from pathlib import Path
 
 
 # Define timestamp
 current_datetime = str(datetime.now())
 
+# Output file path
+script_root = Path(__file__).parent.resolve()
+demofile_path = script_root / "demofile.txt"
+print(demofile_path)
 
 def get_posts():
 
@@ -29,7 +34,7 @@ def get_posts():
         return None
 
 
-def write_to_file(post):
+def write_to_file(post, file_path):
 
     with open("demofile.txt", "a") as f:
         f.write(post)
@@ -45,7 +50,8 @@ def main():
 
         try:
             first_post = json.dumps(first_post, indent=4)
-            write_to_file(f"{current_datetime}: {first_post}\n")
+            final_ouptut = f"{current_datetime}: {first_post}\n"
+            write_to_file(final_ouptut, demofile_path)
 
         except Exception as e:
             return (e,'Failed to write to file')
