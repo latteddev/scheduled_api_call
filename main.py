@@ -36,7 +36,7 @@ def get_posts():
 
 def write_to_file(post, file_path):
 
-    with open("demofile.txt", "a") as f:
+    with open(file_path, "a") as f:
         f.write(post)
 
 
