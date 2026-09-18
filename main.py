@@ -11,7 +11,7 @@ current_datetime = str(datetime.now())
 # Output file path
 script_root = Path(__file__).parent.resolve()
 demofile_path = script_root / "demofile.txt"
-print(demofile_path)
+
 
 def get_posts():
 
@@ -50,8 +50,8 @@ def main():
 
         try:
             first_post = json.dumps(first_post, indent=4)
-            final_ouptut = f"{current_datetime}: {first_post}\n"
-            write_to_file(final_ouptut, demofile_path)
+            post_formatted = f"{current_datetime}: {first_post}\n"
+            write_to_file(post_formatted, demofile_path)
 
         except Exception as e:
             return (e,'Failed to write to file')
